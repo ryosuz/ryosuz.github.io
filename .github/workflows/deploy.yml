@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: write     # デプロイ用
+  id-token: write     # OIDC で必要
+
 jobs:
   build:
     runs-on: ubuntu-latest

@@ -22,12 +22,12 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Your Name" }],
   openGraph: {
-    title: "Portfolio | フロントエンドエンジニア",
+    title: "Portfolio | Ryosuz",
     description:
       "モダンでユーザーフレンドリーなWebアプリケーションを開発するフロントエンドエンジニアのポートフォリオサイト",
     type: "website",
     locale: "ja_JP",
-    url: "https://yourusername.github.io/portfolio",
+    url: "https://portfolio.ryosuz.com/",
   },
   twitter: {
     card: "summary_large_image",

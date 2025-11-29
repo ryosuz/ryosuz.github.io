@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section id="about" className="py-20 bg-gray-50">
+    <section id="about" className="py-20 bg-gray-50 scroll-mt-16">
       <div className="container">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
@@ -15,12 +15,16 @@ export default function About() {
                 こんにちは！
               </h3>
               <p className="text-gray-600 leading-relaxed font-medium mb-4">
-                フロントエンドエンジニアとして、モダンでユーザーフレンドリーなWebアプリケーション開発を得意としています。
-                ReactやNext.jsを中心に、デザインと技術の融合で最高のユーザー体験を提供することを目指しています。
+                このサイトはエンジニアをしている
+                <span className="text-teal-600 font-bold">Ryosuz</span>
+                のポートフォリオサイトです。
+              </p>
+              <p className="text-gray-600 leading-relaxed font-medium mb-4">
+                これまでのスキルや経験、制作したプロジェクトをご紹介します。少しでも私のことを知っていただければ幸いです。
               </p>
               <p className="text-gray-600 leading-relaxed font-medium">
-                このポートフォリオサイトは、私のスキルや経験、制作したプロジェクトをご紹介するために作成しました。
-                シンプルながらも工夫を凝らしたデザインで、見ていて飽きないサイトを目指しました。
+                駆け出しの頃はフロントエンドには全く縁がなかったのですが、気がついたらフロントエンドにハマり、
+                ReactやNext.jsを中心にユーザーの期待以上のものを提供することを目指しています。
               </p>
             </div>
           </div>

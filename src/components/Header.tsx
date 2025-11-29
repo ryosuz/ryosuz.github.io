@@ -34,7 +34,7 @@ export default function Header() {
             aria-label="ホームページに移動"
           >
             <Image
-              src="/icon.png"
+              src={`${process.env.NEXT_PUBLIC_BUCKET_URL}/icon.png`}
               alt="Portfolio Icon"
               width={40}
               height={40}
@@ -57,7 +57,7 @@ export default function Header() {
 
           <div className="flex items-center space-x-4">
             <a
-              href="https://github.com"
+              href={`${process.env.NEXT_PUBLIC_GITHUB_URL}`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 bg-gray-500 border-2 border-gray-300 rounded-2xl flex items-center justify-center text-white hover:bg-gray-600 transform hover:scale-110 transition-all duration-300 shadow-lg"

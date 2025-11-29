@@ -2,64 +2,77 @@ export default function Experience() {
   const experiences = [
     {
       title: "シニアフロントエンドエンジニア",
-      company: "テックカンパニー株式会社",
-      location: "東京",
-      period: "2022年4月 - 現在",
+      company: "株式会社ロークス",
+      location: "愛知",
+      period: "2021年5月 - 現在",
       description: [
-        "React/Next.jsを使用した大規模Eコマースプラットフォームの開発",
-        "チームの技術リードとして、コード品質向上とベストプラクティスの導入",
-        "パフォーマンス最適化により、ページ読み込み時間を40%改善",
-        "ジュニアエンジニア3名のメンタリングと技術指導",
+        "買取業界にどっぷりと浸かることになる",
+        "React/Next.jsを使用した自社向け業務管理システムの開発",
+        "AWSのSQS,S3等のサービスを用いたバックエンドシステムの構築",
+        "買取情報入力から売上管理、オークション出品情報作成までの一連の業務をシステム化",
+        "企業向け宅配弁当会社の業務効率化や顧客管理システム構築にも携わる",
       ],
-      technologies: ["React", "Next.js", "TypeScript", "Node.js", "AWS"],
+      technologies: [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "AWS",
+        "python",
+        "VBA",
+        "Excel",
+        "sqlite",
+      ],
     },
     {
       title: "フロントエンドエンジニア",
-      company: "スタートアップXYZ",
-      location: "東京",
-      period: "2020年6月 - 2022年3月",
+      company: "株式会社MST",
+      location: "愛知",
+      period: "2020年4月 - 2021年4月",
       description: [
-        "SaaSプロダクトのフロントエンド開発とUI/UX改善",
-        "コンポーネントライブラリの構築と設計",
-        "アジャイル開発チームでのスプリント開発",
-        "コードレビューとテストカバレッジの向上",
+        "買取業界のオークション出品作業用サイトのフロントエンド開発",
+        "商品ジャンル詳細化による出品情報精度向上",
+        "画像自動トリミングシステムの構築",
+        "初めてのReactとの出会い",
       ],
-      technologies: ["Vue.js", "JavaScript", "Sass", "Webpack", "Jest"],
+      technologies: ["PHP", "React", "TypeScript"],
     },
     {
-      title: "Web開発インターン",
-      company: "デジタルエージェンシーABC",
-      location: "大阪",
-      period: "2019年9月 - 2020年5月",
+      title: "エンジニアの卵",
+      company: "株式会社インビリティー",
+      location: "愛知",
+      period: "2015年4月 - 2020年4月",
       description: [
-        "クライアント向けWebサイトの制作",
-        "レスポンシブデザインの実装",
-        "WordPressテーマのカスタマイズ",
-        "SEO対策とサイトパフォーマンスの最適化",
+        "就職そうそうに一人でのスマホゲーム開発プロジェクトに配属",
+        "大手自動車企業に出向し4年間、Java, COBOLを用いたバッチ処理業務に携わる",
+        "上流工程も経験し、詳細設計、基本設計等の設計業務も担当",
+        "その後自社へ戻り、AIを用いた工場での危険行動検知システムのPMを経験",
       ],
-      technologies: ["HTML", "CSS", "JavaScript", "WordPress", "PHP"],
+      technologies: ["cocos2d-x", "Java", "C++", "C#", "Oracle", "PHP"],
     },
   ];
 
   const education = [
     {
-      degree: "情報工学学士",
-      school: "東京工業大学",
-      location: "東京",
-      period: "2016年4月 - 2020年3月",
-      description: "コンピュータサイエンス専攻、GPA: 3.8/4.0",
+      degree: "情報科学部情報科学科",
+      school: "愛知県立大学",
+      location: "愛知",
+      period: "2010年4月 - 2014年3月",
+      description: "メディア情報専攻",
     },
   ];
 
   return (
-    <section id="experience" className="py-20 bg-gray-50">
+    <section
+      id="experience"
+      className="py-20 bg-white bg-[radial-gradient(circle,#e5e7eb_1px,transparent_1px)] bg-size-[20px_20px] scroll-mt-16"
+    >
       <div className="container">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-black pop-text mb-4">
             Experience
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto font-medium">
-            フロントエンドエンジニアとしての経験と実績をご紹介します
+            エンジニアとしての経験と実績をご紹介します
           </p>
         </div>
 
@@ -97,10 +110,8 @@ export default function Experience() {
 
                     <ul className="space-y-3 mb-6">
                       {exp.description.map((desc) => (
-                        <li key={desc} className="flex items-start">
-                          <span className="text-purple-500 mr-3 mt-1 text-lg">
-                            ✨
-                          </span>
+                        <li key={desc} className="flex items-center">
+                          <span className="text-slate-500 mr-3 text-lg">★</span>
                           <span className="text-gray-700 font-medium">
                             {desc}
                           </span>

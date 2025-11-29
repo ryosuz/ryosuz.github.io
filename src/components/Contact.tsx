@@ -45,24 +45,19 @@ export default function Contact() {
       href: "mailto:contact@example.com",
     },
     {
-      label: "Phone",
-      value: "+81 12-3456-7890",
-      href: "tel:+811234567890",
-    },
-    {
       label: "Address",
-      value: "Tokyo, Japan",
+      value: "愛知, 日本",
       href: "#contact",
     },
     {
       label: "Business Hours",
-      value: "Mon-Fri 9:00-18:00",
+      value: "月-金 9:00-18:00",
       href: "#contact",
     },
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gray-50">
+    <section id="contact" className="py-20 bg-gray-50 scroll-mt-16">
       <div className="container">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-black pop-text mb-4">
@@ -107,7 +102,7 @@ export default function Contact() {
               </h3>
               <div className="flex space-x-4">
                 <a
-                  href="https://github.com"
+                  href={`${process.env.NEXT_PUBLIC_GITHUB_URL}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 bg-gray-500 border-2 border-gray-300 rounded-2xl flex items-center justify-center text-white hover:bg-gray-600 transform hover:scale-110 transition-all duration-300 shadow-lg"
@@ -125,39 +120,21 @@ export default function Contact() {
                   </svg>
                 </a>
                 <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 bg-blue-400 border-2 border-blue-300 rounded-2xl flex items-center justify-center text-white hover:bg-blue-500 transform hover:scale-110 transition-all duration-300 shadow-lg"
-                  aria-label="LinkedIn"
-                >
-                  <span className="sr-only">LinkedIn</span>
-                  <svg
-                    className="w-6 h-6"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <title>LinkedIn</title>
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                  </svg>
-                </a>
-                <a
                   href="https://twitter.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 bg-sky-400 border-2 border-sky-300 rounded-2xl flex items-center justify-center text-white hover:bg-sky-500 transform hover:scale-110 transition-all duration-300 shadow-lg"
+                  className="w-12 h-12 bg-black border-2 border-gray-800 rounded-2xl flex items-center justify-center text-white hover:bg-gray-800 transform hover:scale-110 transition-all duration-300 shadow-lg"
                   aria-label="Twitter"
                 >
-                  <span className="sr-only">Twitter</span>
+                  <span className="sr-only">X</span>
                   <svg
                     className="w-6 h-6"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                     aria-hidden="true"
                   >
-                    <title>Twitter</title>
-                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                    <title>X</title>
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
                 </a>
               </div>
@@ -166,7 +143,7 @@ export default function Contact() {
 
           <div>
             <h3 className="text-2xl font-black pop-text mb-6">
-              メッセージを送信 ✍️
+              メッセージはこちらから
             </h3>
             <form
               onSubmit={handleSubmit}
@@ -255,7 +232,7 @@ export default function Contact() {
                 disabled={isSubmitting}
                 className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed font-bold text-lg"
               >
-                {isSubmitting ? "送信中... 📤" : "🚀 メッセージを送信"}
+                {isSubmitting ? "送信中..." : "メッセージを送信"}
               </button>
 
               {submitStatus === "success" && (

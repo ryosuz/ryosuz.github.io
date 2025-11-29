@@ -1,10 +1,24 @@
 export default function Skills() {
   const getStarRating = (level: number) => {
-    if (level >= 80) return 5;
-    if (level >= 60) return 4;
-    if (level >= 40) return 3;
-    if (level >= 20) return 2;
-    return 1;
+    return level;
+  };
+
+  const getGrayShade = (level: number) => {
+    const rating = getStarRating(level);
+    switch (rating) {
+      case 1:
+        return "bg-gray-300";
+      case 2:
+        return "bg-gray-400";
+      case 3:
+        return "bg-gray-600";
+      case 4:
+        return "bg-gray-700";
+      case 5:
+        return "bg-gray-900";
+      default:
+        return "bg-gray-300";
+    }
   };
 
   const skillCategories = [
@@ -13,11 +27,11 @@ export default function Skills() {
       bgColor: "bg-teal-400",
       borderColor: "border-teal-300",
       skills: [
-        { name: "React", level: 90, icon: "⚛️", color: "bg-cyan-400" },
-        { name: "Next.js", level: 85, icon: "▲", color: "bg-gray-800" },
-        { name: "TypeScript", level: 80, icon: "📘", color: "bg-blue-500" },
-        { name: "Tailwind CSS", level: 85, icon: "🎨", color: "bg-teal-400" },
-        { name: "Svelte", level: 50, icon: "📜", color: "bg-yellow-400" },
+        { name: "React", level: 5, icon: "⚛️" },
+        { name: "Next.js", level: 4, icon: "▲" },
+        { name: "TypeScript", level: 4, icon: "📘" },
+        { name: "Tailwind CSS", level: 4, icon: "🎨" },
+        { name: "Svelte", level: 2, icon: "📜" },
       ],
     },
     {
@@ -25,10 +39,11 @@ export default function Skills() {
       bgColor: "bg-blue-300",
       borderColor: "border-blue-200",
       skills: [
-        { name: "Node.js", level: 75, icon: "🟢", color: "bg-green-500" },
-        { name: "python", level: 50, icon: "🐍", color: "bg-green-600" },
-        { name: "Express", level: 40, icon: "🚂", color: "bg-gray-700" },
-        { name: "sqlite", level: 60, icon: "🗄️", color: "bg-blue-600" },
+        { name: "Node.js", level: 3, icon: "🟢" },
+        { name: "python", level: 3, icon: "🐍" },
+        { name: "Express", level: 2, icon: "🚂" },
+        { name: "sqlite", level: 3, icon: "🗄️" },
+        { name: "postgreSQL", level: 2, icon: "🗄️" },
       ],
     },
     {
@@ -36,23 +51,29 @@ export default function Skills() {
       bgColor: "bg-cyan-400",
       borderColor: "border-cyan-300",
       skills: [
-        { name: "Vercel", level: 80, icon: "▲", color: "bg-blue-400" },
-        { name: "Cloudflare", level: 65, icon: "☁️", color: "bg-yellow-500" },
-        { name: "AWS", level: 30, icon: "☁️", color: "bg-yellow-500" },
-        { name: "Git/GitHub", level: 70, icon: "📦", color: "bg-orange-500" },
+        { name: "Vercel", level: 4, icon: "▲" },
+        { name: "Cloudflare", level: 3, icon: "☁️" },
+        { name: "AWS", level: 1, icon: "☁️" },
+        { name: "Git/GitHub", level: 4, icon: "📦" },
       ],
     },
   ];
 
   return (
-    <section id="skills" className="py-20 bg-gray-50">
+    <section
+      id="skills"
+      className="py-20 bg-white bg-[radial-gradient(circle,#e5e7eb_1px,transparent_1px)] bg-size-[20px_20px] scroll-mt-16"
+    >
       <div className="container">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-black pop-text mb-4">
             Skills
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto font-medium">
-            フロントエンド開発を中心に、モダンなWeb技術スタックを幅広く扱います
+            フロントエンドを中心に、モダンなWeb技術スタックを幅広く扱います
+          </p>{" "}
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto font-medium">
+            バックエンドに注力することが少なかったので、様々な技術を触って成長したいと思っています
           </p>
         </div>
 
@@ -85,14 +106,14 @@ export default function Skills() {
                           </span>
                         </div>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                      <div className="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
                         <div className="flex h-full">
                           {[1, 2, 3, 4, 5].map((segment) => (
                             <div
                               key={segment}
-                              className={`flex-1 border-r border-gray-300 last:border-r-0 ${
+                              className={`flex-1 border-r border-gray-100 last:border-r-0 ${
                                 segment <= getStarRating(skill.level)
-                                  ? skill.color
+                                  ? getGrayShade(skill.level)
                                   : "bg-gray-200"
                               } transition-all duration-1000 ease-out`}
                             />

@@ -1,20 +1,29 @@
+"use client";
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <footer className="bg-teal-300 text-white py-12">
+    <footer className="bg-teal-500 text-white py-12">
       <div className="container section-padding">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-xl font-black text-teal-800 mb-4">
-              🎨 Portfolio
+            <h3 className="text-xl font-black mb-4 bg-white border-l-10 border-teal-700 text-teal-950 pl-4 rounded-r-full">
+              Portfolio
             </h3>
-            <p className="text-teal-700 mb-4 font-medium">
+            <p className="text-white mb-4 font-medium">
               フロントエンドエンジニアとして、モダンでユーザーフレンドリーなWebアプリケーション開発を得意としています
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://github.com"
+                href={`${process.env.NEXT_PUBLIC_GITHUB_URL}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 bg-gray-500 border-2 border-gray-300 rounded-2xl flex items-center justify-center text-white hover:bg-gray-600 transform hover:scale-110 transition-all duration-300 shadow-lg"
@@ -32,53 +41,35 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 bg-blue-400 border-2 border-blue-300 rounded-2xl flex items-center justify-center text-white hover:bg-blue-500 transform hover:scale-110 transition-all duration-300 shadow-lg"
-                aria-label="LinkedInプロフィールを開く"
-              >
-                <span className="sr-only">LinkedIn</span>
-                <svg
-                  className="w-6 h-6"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <title>LinkedIn</title>
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                </svg>
-              </a>
-              <a
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 bg-sky-400 border-2 border-sky-300 rounded-2xl flex items-center justify-center text-white hover:bg-sky-500 transform hover:scale-110 transition-all duration-300 shadow-lg"
+                className="w-12 h-12 bg-black border-2 border-gray-800 rounded-2xl flex items-center justify-center text-white hover:bg-gray-800 transform hover:scale-110 transition-all duration-300 shadow-lg"
                 aria-label="Twitterプロフィールを開く"
               >
-                <span className="sr-only">Twitter</span>
+                <span className="sr-only">X</span>
                 <svg
                   className="w-6 h-6"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
                 >
-                  <title>Twitter</title>
-                  <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                  <title>X</title>
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
               </a>
             </div>
           </div>
 
           <div>
-            <h3 className="text-xl font-black text-teal-800 mb-4">
-              🔗 クイックリンク
+            <h3 className="text-xl font-black mb-4 bg-white border-l-10 border-teal-700 text-teal-950 pl-4 rounded-r-full">
+              クイックリンク
             </h3>
             <ul className="space-y-3">
               <li>
                 <a
                   href="#home"
-                  className="text-teal-700 hover:text-cyan-600 font-bold transition-all duration-300 transform hover:translate-x-2 inline-block"
+                  className="text-white hover:text-cyan-600 font-bold transition-all duration-300 transform hover:translate-x-2 inline-block"
                 >
                   🏠 ホーム
                 </a>
@@ -86,7 +77,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#skills"
-                  className="text-teal-700 hover:text-cyan-600 font-bold transition-all duration-300 transform hover:translate-x-2 inline-block"
+                  className="text-white hover:text-cyan-600 font-bold transition-all duration-300 transform hover:translate-x-2 inline-block"
                 >
                   💻 スキル
                 </a>
@@ -94,7 +85,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#projects"
-                  className="text-teal-700 hover:text-cyan-600 font-bold transition-all duration-300 transform hover:translate-x-2 inline-block"
+                  className="text-white hover:text-cyan-600 font-bold transition-all duration-300 transform hover:translate-x-2 inline-block"
                 >
                   🎨 プロジェクト
                 </a>
@@ -102,7 +93,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#experience"
-                  className="text-teal-700 hover:text-cyan-600 font-bold transition-all duration-300 transform hover:translate-x-2 inline-block"
+                  className="text-white hover:text-cyan-600 font-bold transition-all duration-300 transform hover:translate-x-2 inline-block"
                 >
                   💼 経歴
                 </a>
@@ -110,7 +101,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#contact"
-                  className="text-teal-700 hover:text-cyan-600 font-bold transition-all duration-300 transform hover:translate-x-2 inline-block"
+                  className="text-white hover:text-cyan-600 font-bold transition-all duration-300 transform hover:translate-x-2 inline-block"
                 >
                   📧 お問い合わせ
                 </a>
@@ -119,26 +110,55 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xl font-black text-teal-800 mb-4">📞 連絡先</h3>
+            <h3 className="text-xl font-black mb-4 bg-white border-l-10 border-teal-700 text-teal-950 pl-4 rounded-r-full">
+              連絡先
+            </h3>
             <div className="space-y-3">
-              <p className="text-teal-700 font-medium">
+              <p className="text-white font-medium">
                 📧 Email:{" "}
                 <a
                   href="mailto:contact@example.com"
-                  className="text-teal-700 hover:text-cyan-600 font-bold transition-all duration-300"
+                  className="text-white hover:text-cyan-600 font-bold transition-all duration-300"
                 >
                   contact@example.com
                 </a>
               </p>
-              <p className="text-teal-700 font-medium">
-                📍 Location: 東京, 日本
-              </p>
+              <p className="text-white font-medium">📍 Location: 愛知, 日本</p>
             </div>
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-white/30 text-center">
-          <p className="text-teal-700 text-center font-medium">
+        {/* Top Button */}
+        <div className="mt-8 pt-8 border-t border-white/30">
+          <div className="text-center mb-6">
+            <button
+              type="button"
+              onClick={scrollToTop}
+              className="inline-flex items-center space-x-2 bg-white text-teal-600 px-6 py-3 rounded-full font-bold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-teal-300"
+              aria-label="ページのトップに戻る"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <title>トップに戻る</title>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 10l7-7m0 0l7 7m-7-7v18"
+                />
+              </svg>
+              <span>トップに戻る</span>
+            </button>
+          </div>
+        </div>
+
+        <div className="text-center">
+          <p className="text-white font-medium">
             &copy; {currentYear} Portfolio. All rights reserved.
           </p>
         </div>

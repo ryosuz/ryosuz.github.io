@@ -48,7 +48,7 @@ export default function Header() {
                 key={item.href}
                 type="button"
                 onClick={() => scrollToSection(item.href)}
-                className="text-gray-600 hover:text-purple-600 font-bold transition-all duration-300 transform hover:scale-110"
+                className="text-gray-600 hover:text-teal-600 font-bold transition-all duration-300 transform hover:scale-110"
               >
                 {item.label}
               </button>
@@ -78,7 +78,7 @@ export default function Header() {
             <button
               type="button"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 bg-purple-400 border-2 border-purple-300 text-white rounded-2xl hover:bg-purple-500 transform hover:scale-110 transition-all duration-300 shadow-lg"
+              className="w-10 h-10 flex items-center justify-center md:hidden border-2 border-gray-300 text-black rounded-2xl hover:bg-gray-200 transform hover:scale-110 transition-all duration-300 shadow-lg"
             >
               <svg
                 className="w-6 h-6"
@@ -87,7 +87,7 @@ export default function Header() {
                 viewBox="0 0 24 24"
                 aria-hidden="true"
               >
-                <title>メニューを{isMenuOpen ? "閉じる" : "開く"}</title>
+                <title>メニュー</title>
                 {isMenuOpen ? (
                   <path
                     strokeLinecap="round"
@@ -109,13 +109,13 @@ export default function Header() {
         </div>
 
         {isMenuOpen && (
-          <nav className="md:hidden py-4 border-t-2 border-purple-200 bg-linear-to-r from-purple-50 to-pink-50 rounded-b-2xl">
+          <nav className="md:hidden py-4 border-t-2 rounded-b-2xl">
             {navItems.map((item) => (
               <button
                 key={item.href}
                 type="button"
                 onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left py-3 px-4 text-gray-700 hover:text-purple-600 font-bold hover:bg-purple-100 transition-all duration-300"
+                className="block w-full text-left py-3 px-4 text-gray-700 hover:text-teal-900 font-bold hover:bg-teal-100 transition-all duration-300"
               >
                 {item.label}
               </button>

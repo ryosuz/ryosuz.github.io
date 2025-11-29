@@ -41,7 +41,7 @@ export default function Hero() {
         <button
           type="button"
           onClick={() => scrollToSection("#about")}
-          className="text-white hover:text-purple-100 transition-colors duration-300"
+          className="text-white duration-300"
           aria-label="About this siteセクションへスクロール"
         >
           <svg

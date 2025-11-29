@@ -86,7 +86,7 @@ export default function Contact() {
                     ) : (
                       <a
                         href={info.href}
-                        className="text-purple-600 hover:text-purple-800 font-bold transition-colors duration-200"
+                        className="text-teal-600 hover:text-teal-800 font-bold transition-colors duration-200"
                       >
                         {info.value}
                       </a>
@@ -164,7 +164,7 @@ export default function Contact() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-purple-200 rounded-2xl focus:ring-4 focus:ring-purple-200 focus:border-purple-400 bg-purple-50 text-gray-800 font-medium transition-all duration-300"
+                    className="w-full px-4 py-3 border-2 border-teal-200 rounded-2xl focus:ring-4 focus:ring-teal-200 focus:border-teal-400 bg-teal-50 text-gray-800 font-medium transition-all duration-300"
                     placeholder="山田 太郎"
                   />
                 </div>
@@ -183,7 +183,7 @@ export default function Contact() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-purple-200 rounded-2xl focus:ring-4 focus:ring-purple-200 focus:border-purple-400 bg-purple-50 text-gray-800 font-medium transition-all duration-300"
+                    className="w-full px-4 py-3 border-2 border-teal-200 rounded-2xl focus:ring-4 focus:ring-teal-200 focus:border-teal-400 bg-teal-50 text-gray-800 font-medium transition-all duration-300"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -202,7 +202,7 @@ export default function Contact() {
                     required
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-purple-200 rounded-2xl focus:ring-4 focus:ring-purple-200 focus:border-purple-400 bg-purple-50 text-gray-800 font-medium transition-all duration-300"
+                    className="w-full px-4 py-3 border-2 border-teal-200 rounded-2xl focus:ring-4 focus:ring-teal-200 focus:border-teal-400 bg-teal-50 text-gray-800 font-medium transition-all duration-300"
                     placeholder="プロジェクトのご相談"
                   />
                 </div>
@@ -221,7 +221,7 @@ export default function Contact() {
                     rows={6}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-purple-200 rounded-2xl focus:ring-4 focus:ring-purple-200 focus:border-purple-400 bg-purple-50 text-gray-800 font-medium resize-none transition-all duration-300"
+                    className="w-full px-4 py-3 border-2 border-teal-200 rounded-2xl focus:ring-4 focus:ring-teal-200 focus:border-teal-400 bg-teal-50 text-gray-800 font-medium resize-none transition-all duration-300"
                     placeholder="詳細をご記入ください..."
                   />
                 </div>

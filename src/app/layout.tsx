@@ -9,9 +9,8 @@ const mplusRounded = M_PLUS_Rounded_1c({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio | フロントエンドエンジニア",
-  description:
-    "モダンでユーザーフレンドリーなWebアプリケーションを開発するフロントエンドエンジニアのポートフォリオサイト。React, Next.js, TypeScriptを得意としています。",
+  title: "Portfolio | Ryosuz",
+  description: "エンジニアRyosuzのポートフォリオサイト",
   keywords: [
     "フロントエンドエンジニア",
     "Web開発",
@@ -23,17 +22,15 @@ export const metadata: Metadata = {
   authors: [{ name: "Your Name" }],
   openGraph: {
     title: "Portfolio | Ryosuz",
-    description:
-      "モダンでユーザーフレンドリーなWebアプリケーションを開発するフロントエンドエンジニアのポートフォリオサイト",
+    description: "エンジニアRyosuzのポートフォリオサイト",
     type: "website",
     locale: "ja_JP",
     url: "https://portfolio.ryosuz.com/",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Portfolio | フロントエンドエンジニア",
-    description:
-      "モダンでユーザーフレンドリーなWebアプリケーションを開発するフロントエンドエンジニアのポートフォリオサイト",
+    title: "Portfolio | Ryosuz",
+    description: "エンジニアRyosuzのポートフォリオサイト",
   },
 };
 

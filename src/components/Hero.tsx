@@ -27,7 +27,7 @@ export default function Hero() {
 
           <div className="mb-8">
             <Image
-              src={`${process.env.NEXT_PUBLIC_BUCKET_URL}/main.png`}
+              src={`${process.env.NEXT_PUBLIC_BUCKET_URL}/main.webp`}
               alt="Main visual"
               width={800}
               height={400}

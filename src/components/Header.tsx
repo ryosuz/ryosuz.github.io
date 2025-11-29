@@ -34,7 +34,7 @@ export default function Header() {
             aria-label="ホームページに移動"
           >
             <Image
-              src={`${process.env.NEXT_PUBLIC_BUCKET_URL}/icon.png`}
+              src={`${process.env.NEXT_PUBLIC_BUCKET_URL}/icon.webp`}
               alt="Portfolio Icon"
               width={40}
               height={40}

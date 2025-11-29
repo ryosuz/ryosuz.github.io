@@ -1,14 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import { BUCKET_URL } from "@/constants/social";
+import { useScrollToSection } from "@/hooks";
+import { ArrowDownIcon } from "./ui/icons";
 
 export default function Hero() {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.querySelector(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const scrollToSection = useScrollToSection();
 
   return (
     <section
@@ -27,7 +25,7 @@ export default function Hero() {
 
           <div className="mb-8">
             <Image
-              src={`${process.env.NEXT_PUBLIC_BUCKET_URL}/main.webp`}
+              src={`${BUCKET_URL}/main.webp`}
               alt="Main visual"
               width={800}
               height={400}
@@ -44,21 +42,7 @@ export default function Hero() {
           className="text-white duration-300"
           aria-label="About this siteセクションへスクロール"
         >
-          <svg
-            className="w-8 h-8 drop-shadow-lg"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <title>下にスクロール</title>
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={3}
-              d="M19 14l-7 7m0 0l-7-7m7 7V3"
-            />
-          </svg>
+          <ArrowDownIcon className="w-8 h-8 drop-shadow-lg" />
         </button>
       </div>
     </section>

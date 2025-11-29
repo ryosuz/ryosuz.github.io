@@ -1,81 +1,33 @@
+import { otherTechnologies, skillCategories } from "@/data";
+import { SectionTitle } from "./ui";
+
+const GRAY_SHADES: Record<number, string> = {
+  1: "bg-gray-300",
+  2: "bg-gray-400",
+  3: "bg-gray-600",
+  4: "bg-gray-700",
+  5: "bg-gray-900",
+};
+
+function getGrayShade(level: number): string {
+  return GRAY_SHADES[level] ?? "bg-gray-300";
+}
+
 export default function Skills() {
-  const getStarRating = (level: number) => {
-    return level;
-  };
-
-  const getGrayShade = (level: number) => {
-    const rating = getStarRating(level);
-    switch (rating) {
-      case 1:
-        return "bg-gray-300";
-      case 2:
-        return "bg-gray-400";
-      case 3:
-        return "bg-gray-600";
-      case 4:
-        return "bg-gray-700";
-      case 5:
-        return "bg-gray-900";
-      default:
-        return "bg-gray-300";
-    }
-  };
-
-  const skillCategories = [
-    {
-      title: "フロントエンド",
-      bgColor: "bg-teal-400",
-      borderColor: "border-teal-300",
-      skills: [
-        { name: "React", level: 5, icon: "⚛️" },
-        { name: "Next.js", level: 4, icon: "▲" },
-        { name: "TypeScript", level: 4, icon: "📘" },
-        { name: "Tailwind CSS", level: 4, icon: "🎨" },
-        { name: "Svelte", level: 2, icon: "📜" },
-      ],
-    },
-    {
-      title: "バックエンド",
-      bgColor: "bg-blue-300",
-      borderColor: "border-blue-200",
-      skills: [
-        { name: "Node.js", level: 3, icon: "🟢" },
-        { name: "python", level: 3, icon: "🐍" },
-        { name: "Express", level: 2, icon: "🚂" },
-        { name: "sqlite", level: 3, icon: "🗄️" },
-        { name: "postgreSQL", level: 2, icon: "🗄️" },
-      ],
-    },
-    {
-      title: "ツール・その他",
-      bgColor: "bg-cyan-400",
-      borderColor: "border-cyan-300",
-      skills: [
-        { name: "Vercel", level: 4, icon: "▲" },
-        { name: "Cloudflare", level: 3, icon: "☁️" },
-        { name: "AWS", level: 1, icon: "☁️" },
-        { name: "Git/GitHub", level: 4, icon: "📦" },
-      ],
-    },
-  ];
-
   return (
     <section
       id="skills"
       className="py-20 bg-white bg-[radial-gradient(circle,#e5e7eb_1px,transparent_1px)] bg-size-[20px_20px] scroll-mt-16"
     >
       <div className="container">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-black pop-text mb-4">
-            Skills
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto font-medium">
-            フロントエンドを中心に、モダンなWeb技術スタックを幅広く扱います
-          </p>{" "}
+        <SectionTitle
+          title="Skills"
+          description="フロントエンドを中心に、モダンなWeb技術スタックを幅広く扱います"
+        >
           <p className="text-xl text-gray-600 max-w-2xl mx-auto font-medium">
             バックエンドに注力することが少なかったので、様々な技術を触って成長したいと思っています
           </p>
-        </div>
+        </SectionTitle>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {skillCategories.map((category) => (
@@ -98,11 +50,11 @@ export default function Skills() {
                           </span>
                         </div>
                         <div className="flex items-center space-x-2">
-                          {getStarRating(skill.level) === 5 && (
+                          {skill.level === 5 && (
                             <span className="text-yellow-500">⭐</span>
                           )}
                           <span className="text-sm font-bold text-gray-600">
-                            Lv.{getStarRating(skill.level)}
+                            Lv.{skill.level}
                           </span>
                         </div>
                       </div>
@@ -112,7 +64,7 @@ export default function Skills() {
                             <div
                               key={segment}
                               className={`flex-1 border-r border-gray-100 last:border-r-0 ${
-                                segment <= getStarRating(skill.level)
+                                segment <= skill.level
                                   ? getGrayShade(skill.level)
                                   : "bg-gray-200"
                               } transition-all duration-1000 ease-out`}
@@ -131,23 +83,7 @@ export default function Skills() {
         <div className="mt-16 text-center">
           <h3 className="text-2xl font-black pop-text mb-6">その他の技術</h3>
           <div className="flex flex-wrap justify-center gap-4">
-            {[
-              "HTML5",
-              "CSS3",
-              "Sass",
-              "Styled Components",
-              "Redux",
-              "Zustand",
-              "Valibot",
-              "Drizzle ORM",
-              "React Query",
-              "Webpack",
-              "Vite",
-              "GraphQL",
-              "REST API",
-              "VBA",
-              "CI/CD",
-            ].map((tech) => (
+            {otherTechnologies.map((tech) => (
               <div
                 key={tech}
                 className="flex items-center gap-2 px-4 py-2 border-2 border-teal-300 rounded-full bg-white text-gray-700 font-medium text-sm hover:bg-teal-50 hover:border-teal-400 transition-all duration-300 shadow-sm hover:shadow-md"

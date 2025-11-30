@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import { contactInfo } from "@/data";
 import { SectionTitle, SocialLinks } from "./ui";
 
@@ -15,6 +16,7 @@ export default function Contact() {
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -28,8 +30,28 @@ export default function Contact() {
     setIsSubmitting(true);
     setSubmitStatus("idle");
 
+    if (!recaptchaToken) {
+      setSubmitStatus("error");
+      setIsSubmitting(false);
+
+      alert("reCAPTCHAを確認してください");
+      return;
+    }
+
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await Promise.all([
+        fetch(
+          "https://7rzvm1dh1i.execute-api.ap-northeast-1.amazonaws.com/prod/contact",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ ...formData, recaptchaToken }),
+          },
+        ),
+        new Promise((resolve) => setTimeout(resolve, 1000)),
+      ]);
       console.log("Form submitted:", formData);
       setSubmitStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
@@ -168,6 +190,13 @@ export default function Contact() {
                     placeholder="詳細をご記入ください..."
                   />
                 </div>
+              </div>
+
+              <div className="mb-1">
+                <ReCAPTCHA
+                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+                  onChange={setRecaptchaToken}
+                />
               </div>
 
               <button

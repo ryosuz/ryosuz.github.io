@@ -85,7 +85,7 @@ export default function Projects() {
                     {selectedProject.screenshots.map((path, index) => (
                       <div
                         key={`screenshot-${selectedProject.title}-${index}`}
-                        className="bg-gray-100 rounded-2xl overflow-hidden"
+                        className="bg-gray-100 rounded-2xl overflow-hidden  border"
                       >
                         <img
                           src={`${import.meta.env.PUBLIC_BUCKET_URL}/projects/${path}`}

@@ -3,21 +3,24 @@ import type { Project } from "@/types";
 export const projects: Project[] = [
   {
     title: "ポートフォリオ",
-    description: "御覧頂いているこのポートフォリオサイトです。",
+    description: "ご覧いただいているこのポートフォリオサイトです。",
     detailedComment:
-      "AstroとReactを活用して、高速なポートフォリオサイトを開発。",
+      "AstroとReactを活用して、高速なポートフォリオサイトを開発。お問い合わせはバックエンドのAWS LambdaとSESを活用して対応しています。",
     technologies: [
       "Astro",
       "React",
-      "TypeScript",
       "Tailwind CSS",
       "GitHub pages",
+      "Go",
+      "AWS Lambda",
+      "AWS SES",
       "CI/CD",
     ],
     screenshots: [
       "portfolio/portfolio_1.webp",
       "portfolio/portfolio_2.webp",
       "portfolio/portfolio_3.webp",
+      "portfolio/portfolio_4.webp",
     ],
     image: "portfolio/portfolio_1.webp",
     githubUrl: "https://github.com/ryosuz/ryosuz.github.io",

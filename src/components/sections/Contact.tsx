@@ -69,7 +69,9 @@ export default function Contact() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           <div>
-            <h3 className="text-2xl font-black pop-text mb-6">連絡先情報</h3>
+            <h3 className="text-2xl font-black text-teal-500 mb-6">
+              連絡先情報
+            </h3>
             <div className="space-y-6">
               {contactInfo.map((info) => (
                 <div
@@ -96,7 +98,7 @@ export default function Contact() {
             </div>
 
             <div className="mt-8">
-              <h3 className="text-2xl font-black pop-text mb-4">
+              <h3 className="text-2xl font-black text-teal-500 mb-4">
                 ソーシャルメディア
               </h3>
               <SocialLinks />
@@ -104,8 +106,8 @@ export default function Contact() {
           </div>
 
           <div>
-            <h3 className="text-2xl font-black pop-text mb-6">
-              メッセージはこちらから
+            <h3 className="text-2xl font-black text-teal-500 mb-6">
+              お問い合わせはこちら
             </h3>
             <form
               onSubmit={handleSubmit}

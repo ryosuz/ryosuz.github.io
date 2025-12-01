@@ -2,20 +2,26 @@ import type { Project } from "@/types";
 
 export const projects: Project[] = [
   {
-    title: "Eコマースプラットフォーム",
-    description:
-      "ReactとNode.jsを使用したフルスタックのEコマースサイト。決済機能、在庫管理、ユーザー認証を実装。",
+    title: "ポートフォリオ",
+    description: "御覧頂いているこのポートフォリオサイトです。",
     detailedComment:
-      "このプロジェクトでは、フロントエンドのReactとバックエンドのNode.jsを連携させ、リアルタイムの在庫管理システムを構築しました。特に決済機能の実装ではStripe APIを活用し、セキュアなトランザクション処理を実現しました。ユーザー認証にはJWTを採用し、セッション管理を適切に行っています。",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe", "JWT"],
-    screenshots: [
-      "/api/placeholder/600/400",
-      "/api/placeholder/600/400",
-      "/api/placeholder/600/400",
+      "AstroとReactを活用して、高速なポートフォリオサイトを開発。",
+    technologies: [
+      "Astro",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "GitHub pages",
+      "CI/CD",
     ],
-    image: "/api/placeholder/400/250",
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
+    screenshots: [
+      "portfolio/portfolio_1.webp",
+      "portfolio/portfolio_2.webp",
+      "portfolio/portfolio_3.webp",
+    ],
+    image: "portfolio/portfolio_1.webp",
+    githubUrl: "https://github.com/ryosuz/ryosuz.github.io",
+    liveUrl: "https://portfolio.ryosuz.com",
     featured: true,
   },
   {

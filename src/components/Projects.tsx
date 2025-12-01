@@ -124,16 +124,18 @@ export default function Projects() {
                     スクリーンショット
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {selectedProject.screenshots.map((_, index) => (
+                    {selectedProject.screenshots.map((path, index) => (
                       <div
                         key={`screenshot-${selectedProject.title}-${index}`}
                         className="bg-gray-100 rounded-2xl overflow-hidden"
                       >
-                        <div className="w-full h-40 bg-gray-200 flex items-center justify-center">
-                          <p className="text-gray-500">
-                            スクリーンショット {index + 1}
-                          </p>
-                        </div>
+                        <img
+                          src={`${import.meta.env.PUBLIC_BUCKET_URL}/projects/${path}`}
+                          alt={`${selectedProject.title} screenshot ${index + 1}`}
+                          width={600}
+                          height={400}
+                          className="w-full h-40 object-cover"
+                        />
                       </div>
                     ))}
                   </div>

@@ -1,99 +1,31 @@
 ---
-import { SocialLinks } from "./ui";
-import ScrollTopButton from "./ui/scroll-top-button";
+const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-teal-500 text-white py-12">
-  <div class="container section-padding">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div>
-        <h3 class="text-xl font-black mb-4 bg-white border-l-10 border-teal-700 text-teal-950 pl-4 rounded-r-full">
-          Portfolio
-        </h3>
-        <p class="text-white mb-4 font-medium">
-          フロントエンドエンジニアとして、モダンでユーザーフレンドリーなWebアプリケーション開発を得意としています
-        </p>
-        <SocialLinks client:load />
-      </div>
-
-      <div>
-        <h3 class="text-xl font-black mb-4 bg-white border-l-10 border-teal-700 text-teal-950 pl-4 rounded-r-full">
-          クイックリンク
-        </h3>
-        <ul class="space-y-3">
-          <li>
-            <a
-              href="#home"
-              class="text-white hover:text-cyan-600 font-bold transition-all duration-300 transform hover:translate-x-2 inline-block"
-            >
-              🏠 ホーム
-            </a>
-          </li>
-          <li>
-            <a
-              href="#skills"
-              class="text-white hover:text-cyan-600 font-bold transition-all duration-300 transform hover:translate-x-2 inline-block"
-            >
-              💻 スキル
-            </a>
-          </li>
-          <li>
-            <a
-              href="#projects"
-              class="text-white hover:text-cyan-600 font-bold transition-all duration-300 transform hover:translate-x-2 inline-block"
-            >
-              🎨 プロジェクト
-            </a>
-          </li>
-          <li>
-            <a
-              href="#experience"
-              class="text-white hover:text-cyan-600 font-bold transition-all duration-300 transform hover:translate-x-2 inline-block"
-            >
-              💼 経歴
-            </a>
-          </li>
-          <li>
-            <a
-              href="#contact"
-              class="text-white hover:text-cyan-600 font-bold transition-all duration-300 transform hover:translate-x-2 inline-block"
-            >
-              📧 お問い合わせ
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div>
-        <h3 class="text-xl font-black mb-4 bg-white border-l-10 border-teal-700 text-teal-950 pl-4 rounded-r-full">
-          連絡先
-        </h3>
-        <div class="space-y-3">
-          <p class="text-white font-medium">
-            📧 Email:{" "}
-            <a
-              href="mailto:contact@example.com"
-              class="text-white hover:text-cyan-600 font-bold transition-all duration-300"
-            >
-              contact@example.com
-            </a>
-          </p>
-          <p class="text-white font-medium">📍 Location: 愛知, 日本</p>
-        </div>
-      </div>
-    </div>
-
-    {/* Top Button */}
-    <div class="mt-8 pt-8 border-t border-white/30">
-      <div class="text-center mb-6">
-        <ScrollTopButton client:load />
-      </div>
-    </div>
-
-    <div class="text-center">
-      <p class="text-white font-medium">
-        &copy; 2025 Portfolio. All rights reserved.
+<footer class="py-8 border-t border-border">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-ink-muted">
+        © {currentYear} Portfolio. All rights reserved.
       </p>
+      <div class="flex gap-6">
+        <a
+          href={import.meta.env.PUBLIC_GITHUB_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-ink-muted hover:text-ink transition-colors"
+        >
+          GitHub
+        </a>
+        <a
+          href="https://twitter.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-ink-muted hover:text-ink transition-colors"
+        >
+          X (Twitter)
+        </a>
+      </div>
     </div>
   </div>
 </footer>

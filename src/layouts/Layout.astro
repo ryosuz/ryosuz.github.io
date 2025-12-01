@@ -1,50 +1,30 @@
 ---
-import "@fontsource/m-plus-rounded-1c/300.css";
-import "@fontsource/m-plus-rounded-1c/400.css";
-import "@fontsource/m-plus-rounded-1c/500.css";
-import "@fontsource/m-plus-rounded-1c/700.css";
-import "@fontsource/m-plus-rounded-1c/800.css";
-import "@fontsource/m-plus-rounded-1c/900.css";
-import "../styles/globals.css";
+import "../styles/global.css";
 
-export interface Props {
-  title?: string;
-  description?: string;
+interface Props {
+	title: string;
+	description?: string;
 }
 
-const {
-  title = "Portfolio | Ryosuz",
-  description = "エンジニアRyosuzのポートフォリオサイト",
-} = Astro.props;
+const { title, description = "Frontend Engineer Portfolio" } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-
-    <title>{title}</title>
-
-    <!-- Open Graph -->
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="ja_JP" />
-    <meta property="og:url" content="https://portfolio.ryosuz.com/" />
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-
-    <!-- Keywords -->
-    <meta name="keywords" content="フロントエンドエンジニア, Web開発, React, Next.js, TypeScript, ポートフォリオ" />
-  </head>
-  <body class="font-m-plus-rounded-1c antialiased">
-    <slot />
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content={description} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<title>{title}</title>
+	</head>
+	<body class="min-h-screen antialiased">
+		<slot />
+	</body>
 </html>

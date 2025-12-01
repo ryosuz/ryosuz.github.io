@@ -1,0 +1,99 @@
+---
+const navItems = [
+  { label: "Top", href: "#top" },
+  { label: "About", href: "#about" },
+  { label: "スキル", href: "#skills" },
+  { label: "実績", href: "#works" },
+  { label: "経歴", href: "#experience" },
+  { label: "お問い合わせ", href: "#contact" },
+];
+---
+
+<header
+  class="fixed top-0 left-0 right-0 z-50 bg-cosmic-latte/80 backdrop-blur-sm border-b border-border"
+>
+  <nav class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3">
+      <img
+        src={`${import.meta.env.PUBLIC_BUCKET_URL}/icon2.webp`}
+        alt="Portfolio"
+        class="w-8 h-8 rounded-full object-cover"
+      />
+      <span class="text-xl font-semibold text-ink! tracking-tight hidden md:block">
+        RYOSUZ LAB
+      </span>
+    </a>
+    <ul class="hidden md:flex items-center gap-8">
+      {
+        navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="text-sm text-ink-light hover:text-ink transition-colors duration-200"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <button
+      id="menu-toggle"
+      class="md:hidden p-2 text-ink"
+      aria-label="メニューを開く"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden bg-cosmic-latte border-b border-border"
+  >
+    <ul class="px-6 py-4 space-y-4">
+      {
+        navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="block text-ink-light hover:text-ink transition-colors duration-200"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</header>
+
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuToggle?.addEventListener("click", () => {
+    mobileMenu?.classList.toggle("hidden");
+  });
+
+  // Close menu when clicking on a link
+  mobileMenu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.add("hidden");
+    });
+  });
+</script>

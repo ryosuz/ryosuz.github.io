@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cosmic-latte: #FFF8E7;
+  --color-cosmic-latte-dark: #F5EDD8;
+  --color-ink: #1a1a1a;
+  --color-ink-light: #4a4a4a;
+  --color-ink-muted: #6b6b6b;
+  --color-border: #e5e5e5;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-cosmic-latte);
+  color: var(--color-ink);
+}
+
+::selection {
+  background-color: var(--color-ink);
+  color: var(--color-cosmic-latte);
+}

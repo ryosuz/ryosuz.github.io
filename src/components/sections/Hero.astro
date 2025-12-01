@@ -1,35 +1,67 @@
 ---
-import { BUCKET_URL } from "@/constants/social";
-import ScrollButton from "../ui/scroll-button";
+const backgroundImg = `${import.meta.env.PUBLIC_BUCKET_URL}/hero.webp`;
 ---
 
-<section
-  id="home"
-  class="min-h-screen flex items-center justify-center relative overflow-hidden bg-teal-500 scroll-mt-16"
->
-  <div class="absolute inset-0 bg-linear-to-br from-teal-400 via-teal-500 to-teal-600"></div>
+<section id="'top" class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden scroll-mt-24 md:scroll-mt-32">
+  <!-- 背景画像 -->
+  <div class="absolute right-4 md:right-20 lg:right-40 top-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[500px] md:h-[500px] pointer-events-none">
+    <div
+      class="w-full h-full bg-contain bg-center bg-no-repeat animate-fade-blur-in opacity-0"
+      style={`background-image: url(${backgroundImg}); mask-image: radial-gradient(closest-side, black 60%, transparent 100%); -webkit-mask-image: radial-gradient(closest-side, black 60%, transparent 100%);`}
+    ></div>
+  </div>
 
-  <div class="relative z-10 text-center px-4">
-    <div class="max-w-4xl mx-auto text-center">
-      <h1 class="text-4xl md:text-6xl lg:text-8xl font-black text-white mb-6 drop-shadow-lg">
-        <span>RYOSUZ LAB!</span>
-      </h1>
-
-      <p class="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed drop-shadow-md font-medium">
-        Ryosuz engineer portfolio
+  <div class="max-w-5xl mx-auto px-6 py-20 relative z-10 w-full">
+    <div class="space-y-6">
+      <p class="text-ink-muted text-sm tracking-widest uppercase">
+        Frontend Engineer
       </p>
-
-      <div class="mb-8">
-        <img
-          src={`${BUCKET_URL}/main.webp`}
-          alt="Main visual"
-          width={800}
-          height={400}
-          class="mx-auto rounded-lg shadow-2xl max-h-80 w-auto object-contain"
-        />
-      </div>
+      <h1 class="text-5xl md:text-7xl font-bold text-ink leading-tight">
+        <span class="text-ink-light">RYOSUZ LAB</span>
+      </h1>
+      <p class="text-ink-muted text-lg max-w-xl leading-relaxed">
+        Ryosuz's portfolio
+      </p>
     </div>
   </div>
 
-  <ScrollButton client:load />
+  <!-- 下矢印 -->
+  <a
+    href="#about"
+    class="absolute bottom-8 left-1/2 -translate-x-1/2 text-ink-muted hover:text-ink transition-colors"
+    aria-label="About this pageへスクロール"
+  >
+    <svg
+      class="w-8 h-8 animate-bounce"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 14l-7 7m0 0l-7-7m7 7V3"
+      />
+    </svg>
+  </a>
 </section>
+
+<style>
+  @keyframes fade-blur-in {
+    0% {
+      opacity: 0;
+      filter: blur(20px);
+      transform: scale(0.8);
+    }
+    100% {
+      opacity: 0.2;
+      filter: blur(0);
+      transform: scale(1);
+    }
+  }
+
+  .animate-fade-blur-in {
+    animation: fade-blur-in 0.5s ease-out forwards;
+  }
+</style>

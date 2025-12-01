@@ -1,0 +1,59 @@
+---
+import { ContactForm } from "../contact-form";
+import SectionHeader from "../SectionHeader.astro";
+---
+
+<section
+  id="contact"
+  class="bg-cosmic-latte-dark py-24 scroll-mt-24 md:scroll-mt-15"
+>
+  <div class="max-w-5xl mx-auto px-6">
+    <SectionHeader title="Contact" />
+    <div class="grid md:grid-cols-2 gap-12">
+      <div class="space-y-6">
+        <p class="text-ink-light leading-relaxed">
+          プロジェクトのご相談やお問い合わせは、フォームまたは下記の連絡先からお気軽にどうぞ。
+        </p>
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-sm text-ink-muted uppercase tracking-widest mb-1">
+              メールアドレス
+            </h3>
+            <a
+              href="mailto:hello@example.com"
+              class="text-ink hover:text-ink-light transition-colors"
+            >
+              hello@example.com
+            </a>
+          </div>
+          <div>
+            <h3 class="text-sm text-ink-muted uppercase tracking-widest mb-1">
+              ソーシャル
+            </h3>
+            <div class="flex gap-4">
+              <a
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-ink hover:text-ink-light transition-colors"
+              >
+                GitHub
+              </a>
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-ink hover:text-ink-light transition-colors"
+              >
+                X (Twitter)
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <ContactForm client:visible />
+      </div>
+    </div>
+  </div>
+</section>

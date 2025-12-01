@@ -1,32 +1,21 @@
 ---
-import { SectionTitle } from "../ui";
-import Section from "../ui/section.astro";
+import SectionHeader from "../SectionHeader.astro";
 ---
 
-<Section id="about">
-  <div class="container">
-    <div class="max-w-4xl mx-auto">
-      <SectionTitle title="About this site" />
-
-      <div class="max-w-2xl mx-auto">
-        <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border-2 border-gray-200">
-          <h3 class="text-2xl font-black text-gray-800 mb-4">
-            こんにちは！
-          </h3>
-          <p class="text-gray-600 leading-relaxed font-medium mb-4">
-            このサイトはエンジニアをしている
-            <span class="text-teal-600 font-bold">Ryosuz</span>
-            のポートフォリオサイトです。
-          </p>
-          <p class="text-gray-600 leading-relaxed font-medium mb-4">
-            これまでのスキルや経験、制作したプロジェクトをご紹介します。少しでも私のことを知っていただければ幸いです。
-          </p>
-          <p class="text-gray-600 leading-relaxed font-medium">
-            駆け出しの頃はフロントエンドには全く縁がなかったのですが、気がついたらフロントエンドにハマり、
-            ReactやNext.jsを中心にユーザーの期待以上のものを提供することを目指しています。
-          </p>
-        </div>
-      </div>
+<section id="about" class="py-24 bg-cosmic-latte-dark scroll-mt-16 md:scroll-mt-15">
+  <div class="max-w-5xl mx-auto px-6">
+    <SectionHeader title="About this page" />
+    <div class="max-w-3xl space-y-6">
+      <p class="text-ink-light leading-relaxed text-lg">
+        はじめまして、Ryosuzです。
+      </p>
+      <p class="text-ink-light leading-relaxed">
+        これまでのスキルや経験、制作したプロジェクトをご紹介します。少しでも私のことを知っていただければ幸いです。
+      </p>
+      <p class="text-ink-light leading-relaxed">
+        駆け出しの頃はフロントエンドには全く縁がなかったのですが、気がついたらフロントエンドにハマり、
+        ReactやNext.jsを中心にユーザーの期待以上のものを提供することを目指しています。
+      </p>
     </div>
   </div>
-</Section>
+</section>

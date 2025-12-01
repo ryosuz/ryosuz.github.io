@@ -1,26 +1,24 @@
 ---
-import Footer from "@/components/Footer.astro";
-import Header from "@/components/Header.tsx";
-import About from "@/components/sections/About.astro";
-import Contact from "@/components/sections/Contact.tsx";
-import Experience from "@/components/sections/Experience.astro";
-import Hero from "@/components/sections/Hero.astro";
-import Projects from "@/components/sections/Projects.tsx";
-import Skills from "@/components/sections/Skills.astro";
 import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Hero from "@/components/sections/Hero.astro";
+import About from "@/components/sections/About.astro";
+import Experience from "@/components/sections/Experience.astro";
+import Skills from "@/components/sections/Skills.astro";
+import Works from "@/components/sections/Works.astro";
+import Contact from "@/components/sections/Contact.astro";
+import Footer from "@/components/Footer.astro";
 ---
 
-<Layout>
-  <div class="min-h-screen bg-background">
-    <Header client:load />
-    <main>
-      <Hero />
-      <About />
-      <Skills />
-      <Projects client:load />
-      <Experience />
-      <Contact client:only="react" />
-    </main>
-    <Footer />
-  </div>
+<Layout title="Portfolio | Ryosuz">
+	<Header />
+	<main>
+		<Hero />
+		<About />
+		<Skills />
+		<Works />
+		<Experience />
+		<Contact />
+	</main>
+	<Footer />
 </Layout>

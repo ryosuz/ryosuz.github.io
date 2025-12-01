@@ -1,3 +1,4 @@
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import {
   Dialog,
@@ -256,65 +257,38 @@ function ImageDialog({
         <DialogHeader>
           <DialogTitle />
         </DialogHeader>
-        <div className="relative">
-          {/* 左矢印ボタン */}
-          {onPrevImage && (
-            <button
-              type="button"
-              onClick={() => onPrevImage()}
-              className="absolute top-1/2 left-4 transform -translate-y-1/2 z-10 w-12 h-12 bg-white/80 hover:bg-white rounded-full flex items-center justify-center transition-colors shadow-lg"
-              aria-label="前の画像"
-            >
-              <svg
-                className="w-6 h-6 text-gray-800"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <title>前の画像</title>
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-            </button>
-          )}
-
+        <div>
           {selectedImage && (
-            <img
-              src={`${import.meta.env.PUBLIC_BUCKET_URL}/projects/${selectedImage.src}`}
-              alt={`スクリーンショット:${selectedImage.src}`}
-              className="max-w-full max-h-full object-contain"
-            />
-          )}
+            <div className="max-w-full max-h-full relative">
+              {/* 左矢印ボタン */}
+              {onPrevImage && (
+                <button
+                  type="button"
+                  onClick={() => onPrevImage()}
+                  className="absolute top-1/2 left-4 transform -translate-y-1/2 z-10 w-12 h-12 bg-white/80 hover:bg-white rounded-full flex items-center justify-center transition-colors shadow-lg"
+                  aria-label="前の画像"
+                >
+                  <ChevronLeft />
+                </button>
+              )}
+              <img
+                src={`${import.meta.env.PUBLIC_BUCKET_URL}/projects/${selectedImage.src}`}
+                alt={`スクリーンショット:${selectedImage.src}`}
+                className="max-w-full max-h-full object-contain"
+              />
 
-          {/* 右矢印ボタン */}
-          {onNextImage && (
-            <button
-              type="button"
-              onClick={() => onNextImage()}
-              className="absolute top-1/2 right-4 transform -translate-y-1/2 z-10 w-12 h-12 bg-white/80 hover:bg-white rounded-full flex items-center justify-center transition-colors shadow-lg"
-              aria-label="次の画像"
-            >
-              <svg
-                className="w-6 h-6 text-gray-800"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <title>次の画像</title>
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
+              {/* 右矢印ボタン */}
+              {onNextImage && (
+                <button
+                  type="button"
+                  onClick={() => onNextImage()}
+                  className="absolute top-1/2 right-4 transform -translate-y-1/2 z-10 w-12 h-12 bg-white/80 hover:bg-white rounded-full flex items-center justify-center transition-colors shadow-lg"
+                  aria-label="次の画像"
+                >
+                  <ChevronRight />
+                </button>
+              )}
+            </div>
           )}
         </div>
       </DialogContent>

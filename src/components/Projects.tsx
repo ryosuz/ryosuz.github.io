@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -63,94 +63,261 @@ export default function Projects() {
         </div>
 
         {/* Dialog */}
-        <Dialog
-          open={!!selectedProject}
+        <ProjectDialog
+          selectedProject={selectedProject}
           onOpenChange={(open) => !open && setSelectedProject(null)}
-        >
-          {selectedProject && (
-            <DialogContent className="max-w-4xl! max-h-[90vh] overflow-y-auto">
-              <DialogHeader>
-                <DialogTitle className="text-3xl font-black text-gray-800">
-                  {selectedProject.title}
-                </DialogTitle>
-              </DialogHeader>
-
-              <div className="space-y-6">
-                {/* Screenshots */}
-                <div>
-                  <h3 className="text-xl font-bold text-gray-700 mb-3">
-                    スクリーンショット
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {selectedProject.screenshots.map((path, index) => (
-                      <div
-                        key={`screenshot-${selectedProject.title}-${index}`}
-                        className="bg-gray-100 rounded-2xl overflow-hidden  border"
-                      >
-                        <img
-                          src={`${import.meta.env.PUBLIC_BUCKET_URL}/projects/${path}`}
-                          alt={`${selectedProject.title} screenshot ${index + 1}`}
-                          width={600}
-                          height={400}
-                          loading="lazy"
-                          className="w-full h-40 object-cover"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Detailed Comment */}
-                <div>
-                  <h3 className="text-xl font-bold text-gray-700 mb-3">
-                    詳細説明
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed font-medium">
-                    {selectedProject.detailedComment}
-                  </p>
-                </div>
-
-                {/* Technologies */}
-                <div>
-                  <h3 className="text-xl font-bold text-gray-700 mb-3">
-                    使用技術
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedProject.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 bg-teal-200 border border-teal-300 text-teal-800 font-semibold rounded-full text-sm"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Links */}
-                <div className="flex space-x-4">
-                  <a
-                    href={selectedProject.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 text-center btn-primary"
-                  >
-                    📁 GitHub
-                  </a>
-                  <a
-                    href={selectedProject.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 text-center btn-secondary"
-                  >
-                    🚀 デモを見る
-                  </a>
-                </div>
-              </div>
-            </DialogContent>
-          )}
-        </Dialog>
+        />
       </div>
     </section>
+  );
+}
+
+interface SelectedImage {
+  index: number;
+  src: string;
+}
+
+interface ProjectDialogProps {
+  selectedProject: Project | null;
+  onOpenChange: (open: boolean) => void;
+}
+function ProjectDialog({ selectedProject, onOpenChange }: ProjectDialogProps) {
+  const [selectedImage, setSelectedImage] = useState<SelectedImage | null>(
+    null,
+  );
+
+  // 矢印キーでのナビゲーション
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!(selectedImage && selectedProject)) {
+        return;
+      }
+
+      const screenshots = selectedProject.screenshots;
+
+      if (e.key === "ArrowLeft" && selectedImage.index > 0) {
+        setSelectedImage({
+          index: selectedImage.index - 1,
+          src: screenshots[selectedImage.index - 1],
+        });
+      } else if (
+        e.key === "ArrowRight" &&
+        selectedImage.index < screenshots.length - 1
+      ) {
+        setSelectedImage({
+          index: selectedImage.index + 1,
+          src: screenshots[selectedImage.index + 1],
+        });
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedImage, selectedProject]);
+
+  return (
+    <>
+      <Dialog open={!!selectedProject} onOpenChange={onOpenChange}>
+        {selectedProject && (
+          <DialogContent className="max-w-4xl! max-h-[90vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle className="text-3xl font-black text-gray-800">
+                {selectedProject.title}
+              </DialogTitle>
+            </DialogHeader>
+
+            <div className="space-y-6">
+              {/* Screenshots */}
+              <div>
+                <h3 className="text-xl font-bold text-gray-700 mb-3">
+                  スクリーンショット
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {selectedProject.screenshots.map((path, index) => (
+                    <button
+                      key={`screenshot-${selectedProject.title}-${index}`}
+                      type="button"
+                      className="bg-gray-100 rounded-2xl overflow-hidden border cursor-pointer hover:shadow-lg transition-shadow w-full text-left"
+                      onClick={() => setSelectedImage({ index, src: path })}
+                    >
+                      <img
+                        src={`${import.meta.env.PUBLIC_BUCKET_URL}/projects/${path}`}
+                        alt={`${selectedProject.title} screenshot ${index + 1}`}
+                        width={600}
+                        height={400}
+                        loading="lazy"
+                        className="w-full h-40 object-cover"
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Detailed Comment */}
+              <div>
+                <h3 className="text-xl font-bold text-gray-700 mb-3">
+                  詳細説明
+                </h3>
+                <p className="text-gray-600 leading-relaxed font-medium">
+                  {selectedProject.detailedComment}
+                </p>
+              </div>
+
+              {/* Technologies */}
+              <div>
+                <h3 className="text-xl font-bold text-gray-700 mb-3">
+                  使用技術
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {selectedProject.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1 bg-teal-200 border border-teal-300 text-teal-800 font-semibold rounded-full text-sm"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Links */}
+              <div className="flex space-x-4">
+                <a
+                  href={selectedProject.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 text-center btn-primary"
+                >
+                  📁 GitHub
+                </a>
+                <a
+                  href={selectedProject.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 text-center btn-secondary"
+                >
+                  🚀 デモを見る
+                </a>
+              </div>
+            </div>
+          </DialogContent>
+        )}
+      </Dialog>
+
+      {selectedProject && (
+        <ImageDialog
+          open={!!selectedImage}
+          selectedImage={selectedImage}
+          onOpenChange={(open) => !open && setSelectedImage(null)}
+          onNextImage={
+            selectedImage &&
+            selectedImage.index < selectedProject.screenshots.length - 1
+              ? () => {
+                  setSelectedImage({
+                    index: selectedImage.index + 1,
+                    src: selectedProject.screenshots[selectedImage.index + 1],
+                  });
+                }
+              : undefined
+          }
+          onPrevImage={
+            selectedImage && 0 < selectedImage.index
+              ? () => {
+                  setSelectedImage({
+                    index: selectedImage.index - 1,
+                    src: selectedProject.screenshots[selectedImage.index - 1],
+                  });
+                }
+              : undefined
+          }
+        />
+      )}
+    </>
+  );
+}
+
+interface ImageDialogProps {
+  selectedImage: SelectedImage | null;
+  open: boolean;
+  onNextImage?: () => void;
+  onOpenChange: (open: boolean) => void;
+  onPrevImage?: () => void;
+}
+function ImageDialog({
+  open,
+  selectedImage,
+  onNextImage,
+  onOpenChange,
+  onPrevImage,
+}: ImageDialogProps) {
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="max-w-5xl! w-full h-[90vh] p-0 bg-black/90 border-none">
+        <DialogHeader>
+          <DialogTitle />
+        </DialogHeader>
+        <div className="relative">
+          {/* 左矢印ボタン */}
+          {onPrevImage && (
+            <button
+              type="button"
+              onClick={() => onPrevImage()}
+              className="absolute top-1/2 left-4 transform -translate-y-1/2 z-10 w-12 h-12 bg-white/80 hover:bg-white rounded-full flex items-center justify-center transition-colors shadow-lg"
+              aria-label="前の画像"
+            >
+              <svg
+                className="w-6 h-6 text-gray-800"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <title>前の画像</title>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
+          )}
+
+          {selectedImage && (
+            <img
+              src={`${import.meta.env.PUBLIC_BUCKET_URL}/projects/${selectedImage.src}`}
+              alt={`スクリーンショット:${selectedImage.src}`}
+              className="max-w-full max-h-full object-contain"
+            />
+          )}
+
+          {/* 右矢印ボタン */}
+          {onNextImage && (
+            <button
+              type="button"
+              onClick={() => onNextImage()}
+              className="absolute top-1/2 right-4 transform -translate-y-1/2 z-10 w-12 h-12 bg-white/80 hover:bg-white rounded-full flex items-center justify-center transition-colors shadow-lg"
+              aria-label="次の画像"
+            >
+              <svg
+                className="w-6 h-6 text-gray-800"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <title>次の画像</title>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          )}
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 }

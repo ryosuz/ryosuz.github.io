@@ -1,10 +1,8 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import { NAV_ITEMS } from "@/constants";
-import { GITHUB_URL } from "@/constants/social";
+import { BUCKET_URL, GITHUB_URL } from "@/constants/social";
 import { useScrollToSection } from "@/hooks";
 import { CloseIcon, GitHubIcon, MenuIcon } from "./ui/icons";
 
@@ -21,19 +19,19 @@ export default function Header() {
     <header className="fixed top-0 w-full bg-white/90 backdrop-blur-lg border-b-2 border-teal-300 z-50 shadow-lg">
       <div className="container">
         <div className="flex items-center justify-between h-16">
-          <Link
+          <a
             href="/"
             className="flex items-center"
             aria-label="ホームページに移動"
           >
-            <Image
-              src={`icon.png`}
+            <img
+              src={`${BUCKET_URL}/icon.webp`}
               alt="Portfolio Icon"
               width={40}
               height={40}
               className="drop-shadow-lg"
             />
-          </Link>
+          </a>
 
           <nav className="hidden md:flex items-center space-x-8">
             {NAV_ITEMS.map((item) => (

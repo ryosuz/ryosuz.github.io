@@ -1,0 +1,118 @@
+---
+import { education, experiences } from "@/data";
+import { SectionTitle } from "./ui/SectionTitle";
+---
+
+<section
+  id="experience"
+  class="py-20 bg-white bg-[radial-gradient(circle,#e5e7eb_1px,transparent_1px)] bg-size-[20px_20px] scroll-mt-16"
+>
+  <div class="container">
+    <SectionTitle
+      title="Experience"
+      description="エンジニアとしての経験と実績をご紹介します"
+    />
+
+    <div class="max-w-4xl mx-auto">
+      <div class="relative">
+        <div class="absolute left-8 top-0 bottom-0 w-3 bg-teal-500 rounded-full"></div>
+
+        {experiences.map((exp) => (
+          <div
+            class="relative flex items-start mb-12"
+          >
+            <div class="absolute left-6 w-6 h-6 bg-teal-500 border-4 border-white shadow-lg rounded-full"></div>
+
+            <div class="ml-16 flex-1">
+              <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border-2 border-teal-300">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                  <div>
+                    <h3 class="text-xl font-black text-gray-800 mb-1">
+                      {exp.title}
+                    </h3>
+                    <p class="text-lg text-teal-600 font-bold">
+                      {exp.company}
+                    </p>
+                  </div>
+                  <div class="text-right mt-2 md:mt-0">
+                    <p class="text-gray-600 text-sm font-semibold">
+                      {exp.location}
+                    </p>
+                    <p class="text-gray-600 text-sm font-semibold">
+                      {exp.period}
+                    </p>
+                  </div>
+                </div>
+
+                <ul class="space-y-3 mb-6">
+                  {exp.description.map((desc) => (
+                    <li class="flex items-center">
+                      <span class="text-slate-500 mr-3 text-lg">★</span>
+                      <span class="text-gray-700 font-medium">
+                        {desc}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div class="flex flex-wrap gap-2">
+                  {exp.technologies.map((tech) => (
+                    <span
+                      class="px-3 py-1 bg-teal-200 border border-teal-300 text-teal-800 font-semibold rounded-full text-xs"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-16">
+        <h3 class="text-3xl font-black pop-text mb-8 text-center">
+          学歴 🎓
+        </h3>
+
+        <div class="relative">
+          <div class="absolute left-8 top-0 bottom-0 w-3 bg-blue-400 rounded-full"></div>
+
+          {education.map((edu) => (
+            <div
+              class="relative flex items-start"
+            >
+              <div class="absolute left-6 w-6 h-6 bg-blue-400 border-4 border-white shadow-lg rounded-full"></div>
+
+              <div class="ml-16 flex-1">
+                <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border-2 border-blue-200">
+                  <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div>
+                      <h4 class="text-lg font-black text-gray-800 mb-1">
+                        {edu.degree}
+                      </h4>
+                      <p class="text-blue-600 font-bold">
+                        {edu.school}
+                      </p>
+                    </div>
+                    <div class="text-right mt-2 md:mt-0">
+                      <p class="text-gray-600 text-sm font-semibold">
+                        📍 {edu.location}
+                      </p>
+                      <p class="text-gray-600 text-sm font-semibold">
+                        📅 {edu.period}
+                      </p>
+                    </div>
+                  </div>
+                  <p class="text-gray-700 mt-3 font-medium">
+                    {edu.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

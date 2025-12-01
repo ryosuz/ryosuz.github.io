@@ -39,7 +39,7 @@ export default function Contact() {
     }
 
     try {
-      await Promise.all([
+      const [response] = await Promise.all([
         fetch(
           "https://7rzvm1dh1i.execute-api.ap-northeast-1.amazonaws.com/prod/contact",
           {
@@ -52,6 +52,8 @@ export default function Contact() {
         ),
         new Promise((resolve) => setTimeout(resolve, 1000)),
       ]);
+      const result = await response.json();
+      console.log(result);
       console.log("Form submitted:", formData);
       setSubmitStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
@@ -194,7 +196,7 @@ export default function Contact() {
 
               <div className="mb-1">
                 <ReCAPTCHA
-                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+                  sitekey={import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY || ""}
                   onChange={setRecaptchaToken}
                 />
               </div>

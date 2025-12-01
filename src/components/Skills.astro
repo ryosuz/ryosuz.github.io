@@ -1,0 +1,82 @@
+---
+import { otherTechnologies, skillCategories } from "@/data";
+import { SectionTitle } from "./ui/SectionTitle";
+---
+
+<section
+  id="skills"
+  class="py-20 bg-white bg-[radial-gradient(circle,#e5e7eb_1px,transparent_1px)] bg-size-[20px_20px] scroll-mt-16"
+>
+  <div class="container">
+    <SectionTitle
+      title="Skills"
+      description="フロントエンドを中心に、モダンなWeb技術スタックを幅広く扱います"
+    >
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto font-medium">
+        バックエンドに注力することが少なかったので、様々な技術を触って成長したいと思っています
+      </p>
+    </SectionTitle>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {skillCategories.map((category) => (
+        <div
+          class={`${category.bgColor} ${category.borderColor} border-2 p-2 rounded-3xl transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl`}
+        >
+          <div class="bg-white rounded-3xl p-8">
+            <h3 class="text-2xl font-black text-gray-800 mb-6 text-center">
+              {category.title}
+            </h3>
+            <div class="space-y-4">
+              {category.skills.map((skill) => (
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                      <span class="text-2xl">{skill.icon}</span>
+                      <span class="font-bold text-gray-800">
+                        {skill.name}
+                      </span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                      {skill.level === 5 && (
+                        <span class="text-yellow-500">⭐</span>
+                      )}
+                      <span class="text-sm font-bold text-gray-600">
+                        Lv.{skill.level}
+                      </span>
+                    </div>
+                  </div>
+                  <div class="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
+                    <div class="flex h-full">
+                      {[1, 2, 3, 4, 5].map((segment) => (
+                        <div
+                          data-level={
+                            segment <= skill.level ? skill.level : 0
+                          }
+                          class={`flex-1 border-r border-gray-100 last:border-r-0 transition-all duration-1000 ease-out data-[level="1"]:bg-gray-300 data-[level="2"]:bg-gray-400 data-[level="3"]:bg-gray-600 data-[level="4"]:bg-gray-700 data-[level="5"]:bg-gray-900 data-[level="0"]:bg-gray-200`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-16 text-center">
+      <h3 class="text-2xl font-black pop-text mb-6">その他の技術</h3>
+      <div class="flex flex-wrap justify-center gap-4">
+        {otherTechnologies.map((tech) => (
+          <div
+            class="flex items-center gap-2 px-4 py-2 border-2 border-teal-300 rounded-full bg-white text-gray-700 font-medium text-sm hover:bg-teal-50 hover:border-teal-400 transition-all duration-300 shadow-sm hover:shadow-md"
+          >
+            <span class="text-teal-500">✓</span>
+            <span>{tech}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

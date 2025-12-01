@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@layer base {
+  /* Custom font */
+  .font-m-plus-rounded-1c {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+  }
+}
+
+@layer components {
+  /* Gradient text */
+  .pop-text {
+    background: linear-gradient(45deg, #14b8a6, #0891b2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply bg-teal-500 text-white px-6 py-3 rounded-2xl font-bold hover:bg-teal-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-teal-300;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-500 text-white px-6 py-3 rounded-2xl font-bold hover:bg-gray-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-gray-300;
+  }
+
+  /* Background pattern */
+  .bg-background {
+    background-color: #f8fafc;
+  }
+
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  /* Section padding */
+  .section-padding {
+    padding: 3rem 1rem;
+  }
+}
+
+@layer utilities {
+  /* Bounce animation */
+  .bounce-animation {
+    animation: bounce 2s infinite;
+  }
+}
+
+/* Keyframes */
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0) translateX(-50%);
+  }
+  40% {
+    transform: translateY(-20px) translateX(-50%);
+  }
+  60% {
+    transform: translateY(-10px) translateX(-50%);
+  }
+}

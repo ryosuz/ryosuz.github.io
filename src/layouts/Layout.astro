@@ -1,19 +1,21 @@
 ---
-import type { Metadata } from 'astro';
-import '@fontsource/m-plus-rounded-1c/300.css';
-import '@fontsource/m-plus-rounded-1c/400.css';
-import '@fontsource/m-plus-rounded-1c/500.css';
-import '@fontsource/m-plus-rounded-1c/700.css';
-import '@fontsource/m-plus-rounded-1c/800.css';
-import '@fontsource/m-plus-rounded-1c/900.css';
-import '../styles/globals.css';
+import "@fontsource/m-plus-rounded-1c/300.css";
+import "@fontsource/m-plus-rounded-1c/400.css";
+import "@fontsource/m-plus-rounded-1c/500.css";
+import "@fontsource/m-plus-rounded-1c/700.css";
+import "@fontsource/m-plus-rounded-1c/800.css";
+import "@fontsource/m-plus-rounded-1c/900.css";
+import "../styles/globals.css";
 
 export interface Props {
   title?: string;
   description?: string;
 }
 
-const { title = 'Portfolio | Ryosuz', description = 'エンジニアRyosuzのポートフォリオサイト' } = Astro.props;
+const {
+  title = "Portfolio | Ryosuz",
+  description = "エンジニアRyosuzのポートフォリオサイト",
+} = Astro.props;
 ---
 
 <!DOCTYPE html>

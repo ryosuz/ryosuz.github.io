@@ -1,12 +1,10 @@
 ---
 import { otherTechnologies, skillCategories } from "@/data";
 import { SectionTitle } from "./ui/SectionTitle";
+import Section from "./ui/section.astro";
 ---
 
-<section
-  id="skills"
-  class="py-20 bg-white bg-[radial-gradient(circle,#e5e7eb_1px,transparent_1px)] bg-size-[20px_20px] scroll-mt-16"
->
+<Section id="skills" isBgDots>
   <div class="container">
     <SectionTitle
       title="Skills"
@@ -79,4 +77,4 @@ import { SectionTitle } from "./ui/SectionTitle";
       </div>
     </div>
   </div>
-</section>
+</Section>

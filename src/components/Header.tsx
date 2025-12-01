@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { NAV_ITEMS } from "@/constants";
 import { BUCKET_URL, GITHUB_URL } from "@/constants/social";

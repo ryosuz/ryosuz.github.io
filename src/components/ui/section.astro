@@ -1,0 +1,13 @@
+
+---
+interface SectionProps {
+  id: string;
+  isBgDots?: boolean;
+}
+
+const { id, isBgDots } = Astro.props;
+---
+
+<section id={id} data-bg-dots={isBgDots} class="py-20 bg-gray-50 scroll-mt-16 data-bg-dots:bg-[radial-gradient(circle,#e5e7eb_1px,transparent_1px)] data-bg-dots:bg-size-[20px_20px] data-bg-dots:bg-white" id={id}>
+  <slot />
+</section>

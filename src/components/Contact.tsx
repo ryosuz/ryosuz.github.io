@@ -40,16 +40,13 @@ export default function Contact() {
 
     try {
       const [response] = await Promise.all([
-        fetch(
-          "https://7rzvm1dh1i.execute-api.ap-northeast-1.amazonaws.com/prod/contact",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ ...formData, recaptchaToken }),
+        fetch(import.meta.env.PUBLIC_API_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
           },
-        ),
+          body: JSON.stringify({ ...formData, recaptchaToken }),
+        }),
         new Promise((resolve) => setTimeout(resolve, 1000)),
       ]);
       const result = await response.json();

@@ -5,6 +5,7 @@ declare global {
     readonly PUBLIC_BUCKET_URL: string;
     readonly PUBLIC_GITHUB_URL: string;
     readonly PUBLIC_RECAPTCHA_SITE_KEY: string;
+    readonly PUBLIC_API_URL: string;
   }
 }
 

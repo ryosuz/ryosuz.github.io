@@ -253,11 +253,14 @@ function ImageDialog({
 }: ImageDialogProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-5xl! w-full h-[90vh] p-0 bg-black/90 border-none">
-        <DialogHeader>
+      <DialogContent
+        className="max-w-5xl! w-full p-0 bg-black/90 border-none"
+        showCloseButton={false}
+      >
+        <DialogHeader className="hidden">
           <DialogTitle />
         </DialogHeader>
-        <div>
+        <div className="h-fit">
           {selectedImage && (
             <div className="max-w-full max-h-full relative">
               {/* 左矢印ボタン */}

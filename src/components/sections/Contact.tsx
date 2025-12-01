@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { contactInfo } from "@/data";
-import { SectionTitle, SocialLinks } from "./ui";
+import { SectionTitle, SocialLinks } from "../ui";
 
 export default function Contact() {
   const [formData, setFormData] = useState({

@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/dialog";
 import { projects } from "@/data";
 import type { Project } from "@/types";
-import { SectionTitle } from "./ui/SectionTitle";
+import { SectionTitle } from "../ui/SectionTitle";
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);

@@ -1,43 +1,36 @@
-# Astro Starter Kit: Minimal
+# RYOSUZ ポートフォリオ
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Astro + React で構築したワンページ構成のポートフォリオサイトです。自己紹介や実績、スキル、問い合わせフォームを掲載し、訪問者が素早く情報へアクセスできるようにデザインされています。
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+サイト全体の仕様や設計方針は [`docs/SPECIFICATION.md`](./docs/SPECIFICATION.md) にまとめています。詳細はそちらを参照してください。
 
-## 🚀 Project Structure
+## 技術スタック
+- Astro 5 / React 19
+- Tailwind CSS 4 + カスタムユーティリティ
+- pnpm / Biome / GitHub Actions
+- Google reCAPTCHA v2（React実装）
 
-Inside of your Astro project, you'll see the following folders and files:
+## 開発環境の準備
+1. 依存関係をインストール
+   ```sh
+   pnpm install
+   ```
+2. ローカル開発サーバーを起動
+   ```sh
+   pnpm dev
+   ```
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## 利用可能なスクリプト
+| コマンド | 目的 |
+| --- | --- |
+| `pnpm dev` | 開発サーバーを起動（http://localhost:4321） |
+| `pnpm build` | 本番ビルドを `dist/` に生成 |
+| `pnpm preview` | ビルド成果物のローカル確認 |
+| `pnpm lint` / `pnpm lint:fix` | BiomeでLintチェック／修正 |
+| `pnpm format` | Biomeで整形 |
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## デプロイ
+GitHub Actions（`.github/workflows/deploy.yml`）で `pnpm install → pnpm build → astro deploy` を実行します。必要な公開環境変数はリポジトリSecretsに設定してください。
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## ドキュメント
+より詳しい仕様やUI/UX設計、データ構造については [`docs/SPECIFICATION.md`](./docs/SPECIFICATION.md) を参照してください。

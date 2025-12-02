@@ -1,10 +1,10 @@
 ---
-const backgroundImg = `${import.meta.env.PUBLIC_BUCKET_URL}/hero.webp`;
+const backgroundImg = `${import.meta.env.PUBLIC_BUCKET_URL}/hero.webp`
 ---
 
 <section id="'top" class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden scroll-mt-24 md:scroll-mt-32">
   <!-- 背景画像 -->
-  <div class="absolute right-4 md:right-20 lg:right-40 top-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[500px] md:h-[500px] pointer-events-none">
+  <div class="absolute right-4 md:right-20 lg:right-60 top-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[500px] md:h-[500px] pointer-events-none">
     <div
       class="w-full h-full bg-contain bg-center bg-no-repeat animate-fade-blur-in opacity-0"
       style={`background-image: url(${backgroundImg}); mask-image: radial-gradient(closest-side, black 60%, transparent 100%); -webkit-mask-image: radial-gradient(closest-side, black 60%, transparent 100%);`}

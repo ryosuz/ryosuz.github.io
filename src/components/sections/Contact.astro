@@ -1,6 +1,6 @@
 ---
-import { ContactForm } from "../contact-form";
-import SectionHeader from "../SectionHeader.astro";
+import { ContactForm } from "../contact-form"
+import SectionHeader from "../SectionHeader.astro"
 ---
 
 <section
@@ -52,7 +52,7 @@ import SectionHeader from "../SectionHeader.astro";
         </div>
       </div>
       <div>
-        <ContactForm client:visible />
+        <ContactForm client:only="react" />
       </div>
     </div>
   </div>

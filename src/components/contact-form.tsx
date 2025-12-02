@@ -1,42 +1,56 @@
-import { useState } from "react";
-import { Send } from "lucide-react";
-import { cn } from "../lib/utils";
+import { Send } from "lucide-react"
+import { useState } from "react"
+import ReCAPTCHA from "react-google-recaptcha"
+import { cn } from "../lib/utils"
 
 export function ContactForm() {
-	const [isSubmitting, setIsSubmitting] = useState(false);
-	const [isSubmitted, setIsSubmitted] = useState(false);
+	const [isSubmitting, setIsSubmitting] = useState(false)
+	const [isSubmitted, setIsSubmitted] = useState(false)
+	const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null)
+	const [recaptchaError, setRecaptchaError] = useState<string>("")
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		setIsSubmitting(true);
+		e.preventDefault()
 
-		// Simulate form submission
-		await new Promise((resolve) => setTimeout(resolve, 1000));
+		if (!recaptchaToken) {
+			setRecaptchaError("reCAPTCHAの認証が必要です")
+			return
+		}
 
-		setIsSubmitting(false);
-		setIsSubmitted(true);
-	};
+		setIsSubmitting(true)
+		setRecaptchaError("")
+
+		const formData = new FormData(e.currentTarget)
+		formData.append("recaptchaToken", recaptchaToken)
+
+		try {
+			// 実際の送信処理をここに実装
+			await fetch(import.meta.env.PUBLIC_POST_URL, { method: "POST", body: formData })
+
+			// Simulate form submission
+			await new Promise((resolve) => setTimeout(resolve, 1000))
+
+			setIsSubmitted(true)
+		} catch {
+			setRecaptchaError("送信に失敗しました。再度お試しください。")
+		} finally {
+			setIsSubmitting(false)
+		}
+	}
 
 	if (isSubmitted) {
 		return (
 			<div className="text-center py-12">
-				<p className="text-ink font-medium">
-					お問い合わせありがとうございます。
-				</p>
-				<p className="text-ink-muted mt-2">
-					内容を確認次第、ご連絡いたします。
-				</p>
+				<p className="text-ink font-medium">お問い合わせありがとうございます。</p>
+				<p className="text-ink-muted mt-2">内容を確認次第、ご連絡いたします。</p>
 			</div>
-		);
+		)
 	}
 
 	return (
 		<form onSubmit={handleSubmit} className="space-y-6">
 			<div>
-				<label
-					htmlFor="name"
-					className="block text-sm text-ink-muted mb-2"
-				>
+				<label htmlFor="name" className="block text-sm text-ink-muted mb-2">
 					お名前
 				</label>
 				<input
@@ -49,10 +63,7 @@ export function ContactForm() {
 				/>
 			</div>
 			<div>
-				<label
-					htmlFor="email"
-					className="block text-sm text-ink-muted mb-2"
-				>
+				<label htmlFor="email" className="block text-sm text-ink-muted mb-2">
 					メールアドレス
 				</label>
 				<input
@@ -65,33 +76,57 @@ export function ContactForm() {
 				/>
 			</div>
 			<div>
-				<label htmlFor="subject" className="block text-sm text-ink-muted mb-2">件名</label>
-				<input type="text" id="subject" name="subject" required className="w-full px-4 py-3 bg-cosmic-latte border border-border rounded-lg text-ink placeholder:text-ink-muted focus:outline-none focus:border-ink transition-colors" placeholder="件名" />
+				<label htmlFor="subject" className="block text-sm text-ink-muted mb-2">
+					件名
+				</label>
+				<input
+					type="text"
+					id="subject"
+					name="subject"
+					required
+					className="w-full px-4 py-3 bg-cosmic-latte border border-border rounded-lg text-ink placeholder:text-ink-muted focus:outline-none focus:border-ink transition-colors"
+					placeholder="件名"
+				/>
 			</div>
 			<div>
-				<label
-					htmlFor="message"
-					className="block text-sm text-ink-muted mb-2"
-				>
+				<label htmlFor="message" className="block text-sm text-ink-muted mb-2">
 					メッセージ
 				</label>
 				<textarea
 					id="message"
+					maxLength={1000}
 					name="message"
 					required
 					rows={5}
 					className="w-full px-4 py-3 bg-cosmic-latte border border-border rounded-lg text-ink placeholder:text-ink-muted focus:outline-none focus:border-ink transition-colors resize-none"
-					placeholder="詳細を入力してください..."
+					placeholder="詳細を入力してください（1000文字以内）"
 				/>
 			</div>
+
+			<div>
+				<ReCAPTCHA
+					sitekey={import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY}
+					onChange={(token) => setRecaptchaToken(token)}
+					onExpired={() => {
+						setRecaptchaToken(null)
+						setRecaptchaError("reCAPTCHAの有効期限が切れました。再度認証してください。")
+					}}
+					onError={() => {
+						setRecaptchaToken(null)
+						setRecaptchaError("reCAPTCHAの読み込みに失敗しました。")
+					}}
+					theme="light"
+					size="normal"
+				/>
+				{recaptchaError && <p className="text-red-500 text-sm mt-2">{recaptchaError}</p>}
+			</div>
+
 			<button
 				type="submit"
-				disabled={isSubmitting}
+				disabled={isSubmitting || !recaptchaToken}
 				className={cn(
 					"inline-flex items-center gap-2 px-6 py-3 bg-ink text-cosmic-latte text-sm font-medium rounded-lg transition-colors",
-					isSubmitting
-						? "opacity-50 cursor-not-allowed"
-						: "hover:bg-ink-light"
+					isSubmitting || !recaptchaToken ? "opacity-50 cursor-not-allowed" : "hover:bg-ink-light",
 				)}
 			>
 				{isSubmitting ? (
@@ -104,5 +139,5 @@ export function ContactForm() {
 				)}
 			</button>
 		</form>
-	);
+	)
 }

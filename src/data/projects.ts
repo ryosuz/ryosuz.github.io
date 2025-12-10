@@ -28,12 +28,20 @@ export const projects: Project[] = [
 		featured: true,
 	},
 	{
-		title: "タスク管理アプリ",
+		title: "Happy News Ear",
 		description:
-			"チームコラボレーション機能付きのタスク管理アプリケーション。リアルタイム更新とドラッグ＆ドロップ機能。",
+			"心温まるニュースを、あなたの耳に。ハッピーなニュースを要約、音声化してお届けするWEBアプリです。",
 		detailedComment:
-			"Next.jsとTypeScriptを活用して、タイプセーフなタスク管理アプリを開発。Socket.ioによるリアルタイム通信で、複数ユーザーによる同時編集を実現。ドラッグ＆ドロップ機能にはHTML5 Drag and Drop APIを使用し、直感的なUIを提供。PostgreSQLで複雑なタスク階層とユーザー権限を管理しています。",
-		technologies: ["Next.js", "TypeScript", "PostgreSQL", "Socket.io", "Tailwind CSS"],
+			"AWSをふんだんに駆使し、ニュース取得->ハッピー度判定->要約->音声化->配信という流れを自動化。ハッピーな記事だけが配信され、WEBアプリ上で音声として聞くことが出来ます。",
+		technologies: [
+			"AWS",
+			"Step Functions",
+			"Lambda",
+			"Bedrock",
+			"Tanstack Start",
+			"Tanstack Query",
+			"Tailwind CSS",
+		],
 		screenshots: [
 			"/api/placeholder/600/400",
 			"/api/placeholder/600/400",

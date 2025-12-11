@@ -49,8 +49,8 @@ export const projects: Project[] = [
 			"happy-news-ear/hne_2.webp",
 		],
 		image: "happy-news-ear/hne_top.webp",
-		githubUrl: "https://github.com",
-		liveUrl: "https://dev.happy-news-ear.ryosuz.com/",
+		githubUrl: "https://github.com/ryosuz/happy-news-ear",
+		liveUrl: "https://happy-news-ear.ryosuz.com/",
 		featured: true,
 	},
 	{

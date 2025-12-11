@@ -5,7 +5,7 @@ export interface Project {
 	technologies: string[]
 	screenshots: string[]
 	image: string
-	githubUrl: string
+	githubUrl?: string
 	liveUrl?: string
 	featured: boolean
 }

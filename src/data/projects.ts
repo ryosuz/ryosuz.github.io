@@ -47,6 +47,7 @@ export const projects: Project[] = [
 			"happy-news-ear/hne_top.webp",
 			"happy-news-ear/hne_1.webp",
 			"happy-news-ear/hne_2.webp",
+			"happy-news-ear/hne_3.webp",
 		],
 		image: "happy-news-ear/hne_top.webp",
 		githubUrl: "https://github.com/ryosuz/happy-news-ear",

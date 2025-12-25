@@ -55,12 +55,27 @@ export const projects: Project[] = [
 		featured: true,
 	},
 	{
+		title: "【開発中】Episynca",
+		description:
+			"海外ドラマ好きのためのアプリ。視聴継続をサポート！週間目標やこれまで視聴してきたドラマたちをコレクションできる。",
+		detailedComment:
+			"海外ドラマが好きだが、なかなか続かない、途中で断念してしまうという方が多い。そこで、週間目標を設定して、視聴を継続をサポート！自分が視聴してきたドラマがマイリストに溜まっていくので、コレクション感覚で眺めることも出来ます。",
+		technologies: ["Flutter", "Riverpod", "Supabase", "Firebase"],
+		screenshots: [
+			"episynca/episynca_top.webp",
+			"episynca/episynca_1.webp",
+			"episynca/episynca_2.webp",
+		],
+		image: "episynca/episynca_top.webp",
+		featured: true,
+	},
+	{
 		title: "社内向け売上管理システム",
 		description: "営業結果、売上データ、出品情報、相場等の管理を行えます。",
 		detailedComment:
 			"社内向けの管理システムです。社内業務のことはここに集約し、売上管理から日々の営業日報、出品作業やコールセンターのヒヤリングシート作成を行えます。出品データの保存にはS3, アップロード用データ生成にはLambdaやSQSを使用し、完成をまたなくても別作業に移れるようにしています。",
 		technologies: ["Next.js", "Lambda", "SQS", "Vercel", "TypeScript", "Tailwind CSS", "CI/CD"],
-		screenshots: ["ms/ms_1.webp", "ms/ms_2.webp", "ms/ms_3.webp"],
+		screenshots: ["ms/ms_1.webp", "ms/ms_2.webp", "ms/ms_3.webp", "ms/ms_4.webp"],
 		image: "ms/ms_1.webp",
 		featured: false,
 	},
